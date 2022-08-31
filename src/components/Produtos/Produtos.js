@@ -5,13 +5,27 @@ import styles from './Produtos.module.css';
 
 const Produtos = () => {
   const [produtos, setProdutos] = React.useState(null);
+  const [error, setError] = React.useState(null);
+  const [loading, setLoading] = React.useState(false);
 
   React.useEffect(() => {
-    fetch('https://ranekapi.origamid.dev/json/api/produto')
-      .then(r => r.json())
-      .then(json => setProdutos(json));
+    async function fetchProdutos(url) {
+      try {
+        setLoading(true);
+        const response = await fetch(url);
+        const produtos = await response.json();
+        setProdutos(produtos);
+      } catch (error) {
+        setError('Ocorreu um erro inesperado')
+      } finally {
+        setLoading(false)
+      }
+    }
+    fetchProdutos('https://ranekapi.origamid.dev/json/api/produto');
   }, [])
 
+  if (loading) return <div className="loading"></div>;
+  if (error) return <p>{error}</p>;
   if (produtos === null) return null;
   return (
     <section className={styles.produtos + " animeLeft"}>

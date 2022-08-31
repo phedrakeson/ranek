@@ -1,9 +1,20 @@
 import React from 'react';
 import styles from './Contato.module.css';
+import foto from '../../img/contato.jpg';
 
 const Contato = () => {
   return (
-    <h1>Contato</h1>
+    <section className={styles.contato}>
+      <img src={foto} alt="Máquina de escrever" />
+      <div>
+        <h1>Entre em contato</h1>
+        <ul className={styles.dados}>
+          <li>contato@email.com</li>
+          <li>(51) 9 9999-9999</li>
+          <li>Rua Ali Perto, 999</li>
+        </ul>
+      </div>
+    </section>
   )
 }
 

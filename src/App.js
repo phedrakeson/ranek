@@ -3,6 +3,7 @@ import './App.css';
 import Contato from './components/Contato/Contato';
 import Footer from './components/Footer/Footer';
 import Header from './components/Header/Header';
+import Produto from './components/Produto/Produto';
 import Produtos from './components/Produtos/Produtos';
 
 function App() {
@@ -14,6 +15,7 @@ function App() {
           <Routes>
             <Route path='/' element={<Produtos />} />
             <Route path='contato' element={<Contato />} />
+            <Route path='produto/:id' element={<Produto />} />
           </Routes>
         </div>
         <Footer />
